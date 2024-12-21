@@ -15,15 +15,30 @@ const uploadLimiter = rateLimit({
   message: { error: 'Too many uploads from this IP, please try again after 15 minutes' }
 });
 
-// CORS configuration
-const corsOptions = {
-  origin: process.env.NODE_ENV === 'production' 
-    ? process.env.FRONTEND_URL // Will be set during deployment
-    : 'http://localhost:5173',
-  optionsSuccessStatus: 200
-};
+// CORS configuration with allowlist
+const allowedOrigins = [
+    'http://localhost:5173',     // Local development
+    'http://localhost:3000',     // Alternative local port
+    'https://christmas-tree-rater.vercel.app'     // Production URL (set in environment variables)
+  ].filter(Boolean); // Remove any undefined values
+  
 
-app.use(cors(corsOptions));
+  app.use(cors({
+    origin: function(origin, callback) {
+      // Allow requests with no origin (like mobile apps or Postman)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        console.log('Blocked by CORS:', origin);
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+  }));
+
 app.use(express.json());
 
 // Basic health check endpoint
