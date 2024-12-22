@@ -57,8 +57,8 @@ const supabase = createClient(
   process.env.SUPABASE_ANON_KEY
 );
 
-// Set file size limit to 5MB
-const MAX_FILE_SIZE = 5 * 1024 * 1024;
+// Set file size limit to 12MB
+const MAX_FILE_SIZE = 12 * 1024 * 1024;
 
 // Configure multer for image uploads
 const storage = multer.memoryStorage();

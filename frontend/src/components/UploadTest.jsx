@@ -88,7 +88,7 @@ const ErrorDisplay = ({ error }) => {
   );
 };
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB in bytes
+const MAX_FILE_SIZE = 12 * 1024 * 1024; // 5MB in bytes
 
 const UploadTest = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -208,7 +208,7 @@ const UploadTest = () => {
                     <span className="font-semibold">Click to upload</span> or drag and drop
                   </p>
                   <p className="text-xs text-gray-500">
-                    Maximum file size: 5MB
+                    Maximum file size: 12MB
                   </p>
                 </div>
               </label>
