@@ -1,8 +1,8 @@
-Christmas Tree Rater - Project Documentation
+# Christmas Tree Rater - Project Documentation
 Project Overview
 A web application that allows users to upload photos of Christmas trees and receive AI-powered ratings and feedback. The application analyzes the aesthetics and originality of each tree, providing specific scores, explanations, and improvement suggestions.
 
-Environment Configuration
+## Environment Configuration
 Required environment variables:
 
 # Backend (.env)
@@ -27,18 +27,21 @@ create table tree_ratings (
   great_features text not null,
   improvements text[] not null
 );
-Technical Requirements
+
+
+## Technical Requirements
 Frontend: React, Tailwind CSS, React Router
 Backend: Express, OpenAI, @supabase/supabase-js
 Database: Supabase
-New dependencies to add: react-router-dom
-Notes
+
+# Notes
 Maximum file upload size: 5MB
 Rate limit: 10 uploads per 15 minutes per IP
 Backend port: 3001
 Frontend dev server port: 5173
 Supabase storage bucket: 'christmas-trees'
-How to test this locally
+
+# How to test this locally
 make sure your backend is running cd backend npm install # if you haven't already npm start # should start on port 3001
 
 In a new terminal, start the frontend cd frontend npm install # if you haven't already npm run dev # should start on port 5173
